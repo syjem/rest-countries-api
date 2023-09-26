@@ -1,14 +1,10 @@
-import React, { useState } from "react";
 import { GoSearch } from "react-icons/go";
 import useTheme from "../context/useTheme";
+import { useCountries } from "../context/useCountries";
 
 const Search = () => {
   const { theme } = useTheme();
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(e.target.value);
-  };
+  const { searchCountry, handleChange } = useCountries();
 
   const bg = theme == "dark" ? "bg-dark-blue" : "bg-slate-50";
   const textColor = theme == "dark" ? "text-white" : "dark-blue-bg";
@@ -23,7 +19,7 @@ const Search = () => {
         name="search"
         id="search"
         autoComplete="off"
-        value={searchValue}
+        value={searchCountry}
         onChange={handleChange}
         placeholder="Search for a country..."
         className="border-0 outline-0 p-1 bg-inherit w-full focus:outline-none md:text-lg"

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -15,8 +15,19 @@ type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
+const key = "theme";
+const initialValue = "light";
+
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState<Theme>("light");
+  // Get Item on Local Storage
+  const savedValue = localStorage.getItem(key);
+  const parsedValue = savedValue ? JSON.parse(savedValue) : initialValue;
+  const [theme, setTheme] = useState<Theme>(parsedValue);
+
+  // Set Item on Local Storage
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(theme));
+  }, [theme]);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));

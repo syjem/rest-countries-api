@@ -23,16 +23,7 @@ body {
 }
 
 @layer utilities {
-  .max-width {
-    width: 100%;
-    max-width: 210px;
-  }
-
   .grid-cols-auto {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-
-  .max-w-250 {
-    max-width: 320px;
   }
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCountries } from "../context/useCountries";
 import useTheme from "../context/useTheme";
 import { FiChevronDown } from "react-icons/fi";
 
@@ -6,17 +6,8 @@ const continents = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
 const FilterRegion = () => {
   const { theme } = useTheme();
-  const [showFilter, setShowFilter] = useState(false);
-  const [filterValue, setFilterValue] = useState("Filter by Region");
-
-  const handleShowFilter = () => {
-    setShowFilter(!showFilter);
-  };
-
-  const handleChangeFilter = (filter: string) => {
-    setFilterValue(filter);
-    setShowFilter(!showFilter);
-  };
+  const { region, handleShowFilter, handleChangeFilter, showFilter } =
+    useCountries();
 
   const bg = theme == "dark" ? "bg-dark-blue" : "bg-slate-50";
   const textColor = theme == "dark" ? "text-white" : "dark-blue-bg";
@@ -24,10 +15,10 @@ const FilterRegion = () => {
 
   return (
     <div
-      className={`${bg} ${textColor} w-full mt-8 md:mt-0 rounded-md max-width relative cursor-pointer`}
+      className={`${bg} ${textColor} w-full mt-8 md:mt-0 rounded-md max-w-[210px] relative cursor-pointer`}
     >
       <div onClick={handleShowFilter} className="flex justify-between p-4">
-        <span className="text-base md:text-lg ">{filterValue}</span>
+        <span className="text-base md:text-lg ">{region}</span>
         <FiChevronDown
           className={` ${
             showFilter ? "rotate-180" : "rotate-0"

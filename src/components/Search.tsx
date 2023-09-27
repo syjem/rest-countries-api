@@ -11,7 +11,7 @@ const Search = () => {
 
   return (
     <div
-      className={`${bg} ${textColor} py-3 px-4 w-full flex items-center gap-2 rounded-md max-w-md`}
+      className={`${bg} ${textColor} py-3 px-4 w-full flex items-center gap-2 rounded-md max-w-md shadow-md`}
     >
       <GoSearch className="text-xl text-inherit" />
       <input

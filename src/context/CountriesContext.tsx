@@ -11,13 +11,23 @@ type CountriesContextType = {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const CountriesContext = createContext<CountriesContextType>("");
+const initialContextValue: CountriesContextType = {
+  url: "all",
+  setUrl: () => {},
+  searchCountry: "",
+  showFilter: false,
+  handleChange: () => {},
+  region: "Filter by Region",
+  handleShowFilter: () => {},
+  handleChangeFilter: () => {},
+};
+
+export const CountriesContext =
+  createContext<CountriesContextType>(initialContextValue);
 
 type CountriesContextProps = {
   children: React.ReactNode;
 };
-
-// type URLType = `https://restcountries.com/v3.1/all`;
 
 type URLType = "all" | "name" | "region";
 
@@ -41,9 +51,16 @@ const CountriesContextProvider = ({ children }: CountriesContextProps) => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUrl("name");
+    const inputValue = e.target.value;
+
+    if (inputValue.trim() === "") {
+      setUrl("all");
+    } else {
+      setUrl("name");
+    }
+
     setRegion(regionInitial);
-    setSearchCountry(e.target.value);
+    setSearchCountry(inputValue);
   };
 
   return (

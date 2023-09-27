@@ -15,7 +15,7 @@ const FilterRegion = () => {
 
   return (
     <div
-      className={`${bg} ${textColor} w-full mt-8 md:mt-0 rounded-md max-w-[210px] relative cursor-pointer`}
+      className={`${bg} ${textColor} w-full mt-8 md:mt-0 rounded-md max-w-[210px] relative cursor-pointer shadow-md`}
     >
       <div onClick={handleShowFilter} className="flex justify-between p-4">
         <span className="text-base md:text-lg ">{region}</span>

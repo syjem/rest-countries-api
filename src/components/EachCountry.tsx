@@ -56,7 +56,7 @@ const EachCountry = () => {
           </button>
         </div>
         <section
-          className={`${textColor} text-center text-xl max-container w-full pb-20 mt-12 grid gap-10 grid-cols-auto`}
+          className={`${textColor}text-center text-xl max-container w-full pb-20 mt-12 grid gap-10 grid-cols-auto`}
         >
           {countryData ? <Country item={countryData} /> : `${error}`}
         </section>

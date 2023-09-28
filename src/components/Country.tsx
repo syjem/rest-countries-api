@@ -36,7 +36,7 @@ const Country = ({ item }: CountryProps) => {
 
   return (
     <div
-      className={`${textColor} text-left flex flex-col lg:flex-row w-full lg:h-[360px] mx-auto rounded-sm overflow-hidden gap-6 lg:gap-24`}
+      className={`${textColor} text-left flex flex-col lg:flex-row w-full lg:h-[100%] mx-auto rounded-sm overflow-hidden gap-6 lg:gap-24`}
     >
       <div className="w-full max-w-[500px] h-[95%]">
         <img
@@ -46,7 +46,7 @@ const Country = ({ item }: CountryProps) => {
         />
       </div>
 
-      <div className="w-full flex flex-col gap-6 lg:pt-10">
+      <div className="w-full flex flex-col gap-6 lg:pt-10 pb-4">
         <h5 className="text-base md:text-xl font-800 leading-10">
           {item.name.common}
         </h5>

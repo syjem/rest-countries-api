@@ -1,5 +1,5 @@
 import useTheme from "../context/useTheme";
-import formatPopulation from "../Formatter";
+import formatPopulation from "../formatPopulation";
 
 type CountriesDataProps = {
   item: {
@@ -38,13 +38,19 @@ const CountriesData = ({ item }: CountriesDataProps) => {
         </h5>
         <p className="font-600 leading-8">
           Population:{" "}
-          <span className="font-300">{formatPopulation(item.population)}</span>
+          <span className="font-300">
+            {item.population ? formatPopulation(item.population) : "N/A"}
+          </span>
         </p>
         <p className="font-600 leading-8">
-          Region: <span className="font-300">{item.region}</span>
+          Region:{" "}
+          <span className="font-300">{item.region ? item.region : "N/A"}</span>
         </p>
         <p className="font-600 leading-8">
-          Capital: <span className="font-300">{item.capital}</span>
+          Capital:{" "}
+          <span className="font-300">
+            {item.capital ? item.capital : "N/A"}
+          </span>
         </p>
       </div>
     </div>

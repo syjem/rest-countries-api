@@ -1,6 +1,6 @@
-import { useCountries } from "../context/useCountries";
 import useTheme from "../context/useTheme";
 import { FiChevronDown } from "react-icons/fi";
+import { useCountries } from "../context/useCountries";
 
 const continents = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
@@ -31,13 +31,13 @@ const FilterRegion = () => {
           showFilter ? "block" : "hidden opacity-0"
         }  opacity-100 absolute top-[110%] left-0 bg-inherit w-full list-none py-3 rounded-md transition-opacity z-10`}
       >
-        {continents.map((list) => (
+        {continents.map((continent) => (
           <li
-            key={list}
+            key={continent}
             className={`${hoverBg} cursor-pointer px-4 py-1`}
-            onClick={() => handleChangeFilter(list)}
+            onClick={() => handleChangeFilter(continent)}
           >
-            {list}
+            {continent}
           </li>
         ))}
       </ul>

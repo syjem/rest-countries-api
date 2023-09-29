@@ -14,32 +14,31 @@ export const CountryCode = ({ countryCode }: CountryProps) => {
   const { data, error, isLoading } = useSWR(
     `https://restcountries.com/v3.1/alpha/${countryCode}`,
     async (url) => {
-      const response = await fetch(url);
+      try {
+        const response = await fetch(url);
 
-      if (!response.ok) {
-        throw new Error(`No result for ${countryCode}!`);
-      }
+        if (!response.ok) {
+          throw new Error(`No result for ${countryCode}!`);
+        }
 
-      const data = await response.json();
-      if (data.length > 0 && data[0].name) {
-        return data[0].name.common;
-      } else {
-        throw new Error("Data not available");
+        const data = await response.json();
+
+        if (data.length > 0 && data[0].name) {
+          return data[0].name.common;
+        } else {
+          throw new Error("Data not available");
+        }
+      } catch (error) {
+        throw new Error(`${error}`);
       }
     }
   );
 
   if (error) {
-    return (
-      <span
-        className={`${bg} font-300 custom-shadow px-3 mr-2 rounded-sm first-of-type:ml-1`}
-      >
-        Error
-      </span>
-    );
+    return "";
   }
 
-  if (isLoading) return <Skeleton className="h-8 w-[70px]" />;
+  if (isLoading) return <Skeleton className="h-8 w-[70px] rounded-sm mr-2" />;
 
   return (
     <span
@@ -56,7 +55,7 @@ type BordersProps = {
 
 const Borders = ({ borders }: BordersProps) => {
   return (
-    <p className="font-600 leading-8 text-base flex flex-wrap gap-y-2 items-center">
+    <div className="font-600 leading-8 text-base flex flex-wrap gap-y-2 items-center">
       Border Countries:{" "}
       {borders ? (
         borders.map((border) => (
@@ -67,7 +66,7 @@ const Borders = ({ borders }: BordersProps) => {
       ) : (
         <span className="font-300 ml-1">N/A</span>
       )}
-    </p>
+    </div>
   );
 };
 

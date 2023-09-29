@@ -1,6 +1,6 @@
-import useTheme from "../context/useTheme";
-import formatPopulation from "../Formatter";
 import Borders from "./CountryBorders";
+import useTheme from "../context/useTheme";
+import formatPopulation from "../formatPopulation";
 
 type CountryProps = {
   item: {
@@ -55,43 +55,61 @@ const Country = ({ item }: CountryProps) => {
             <p className="font-600 leading-8">
               Native Name:{" "}
               <span className="font-300">
-                {Object.values(item.name.nativeName)[0].common}
+                {item.name.nativeName
+                  ? Object.values(item.name.nativeName)[0].common
+                  : "N/A"}
               </span>
             </p>
             <p className="font-600 leading-8">
               Population:{" "}
               <span className="font-300">
-                {formatPopulation(item.population)}
+                {item.population ? formatPopulation(item.population) : "N/A"}
               </span>
             </p>
             <p className="font-600 leading-8">
-              Region: <span className="font-300">{item.region}</span>
+              Region:{" "}
+              <span className="font-300">
+                {item.region ? item.region : "N/A"}
+              </span>
             </p>
             <p className="font-600 leading-8">
-              Sub Region: <span className="font-300">{item.subregion}</span>
+              Sub Region:{" "}
+              <span className="font-300">
+                {item.subregion ? item.subregion : "N/A"}
+              </span>
             </p>
             <p className="font-600 leading-8">
-              Capital: <span className="font-300">{item.capital}</span>
+              Capital:{" "}
+              <span className="font-300">
+                {item.capital ? item.capital : "N/A"}
+              </span>
             </p>
           </div>
           <div className="flex-1 text-base">
             <p className="font-600 leading-8">
-              Top Level Domain: <span className="font-300">{item.tld[0]}</span>
+              Top Level Domain:{" "}
+              <span className="font-300">{item.tld ? item.tld[0] : "N/A"}</span>
             </p>
             <p className="font-600 leading-8">
               Currencies:{" "}
               <span className="font-300">
-                {Object.values(item.currencies)[0].name}
+                {item.currencies
+                  ? Object.values(item.currencies)[0].name
+                  : "N/A"}
               </span>
             </p>
             <p className="font-600 leading-8">
               Languages:{" "}
-              {Object.values(item.languages).map((name, index) => (
-                <span className="font-300" key={index}>
-                  {name}
-                  {index < Object.keys(item.languages).length - 1 ? ", " : ""}
-                </span>
-              ))}
+              {item.languages
+                ? Object.values(item.languages).map((name, index) => (
+                    <span className="font-300" key={index}>
+                      {name}
+                      {index < Object.keys(item.languages).length - 1
+                        ? ", "
+                        : ""}
+                    </span>
+                  ))
+                : "N/A"}
             </p>
           </div>
         </div>

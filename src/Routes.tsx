@@ -1,6 +1,6 @@
 import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EachCountry from "./components/EachCountry";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const Routes = () => {
   const router = createBrowserRouter([

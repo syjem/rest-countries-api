@@ -29,7 +29,7 @@
 
 |                |                  |
 | :------------- | :--------------- |
-| Live Site URL: | [To be posted]() |
+| Live Site URL: | [https://rest-countries-api-9mv.pages.dev/](https://rest-countries-api-9mv.pages.dev/) |
 |                |
 
 <br>

@@ -38,7 +38,7 @@ export const CountryCode = ({ countryCode }: CountryProps) => {
     return "";
   }
 
-  if (isLoading) return <Skeleton className="h-8 w-[70px] rounded-sm mr-2" />;
+  if (isLoading) return <Skeleton className="h-8 w-[70px] rounded-sm ml-2" />;
 
   return (
     <span

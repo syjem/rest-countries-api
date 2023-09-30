@@ -1,12 +1,12 @@
 import useSWR from "swr";
 import Header from "./Header";
 import Country from "./Country";
-import { Skeleton } from "./ui/skeleton";
 import useTheme from "../context/useTheme";
 import { useParams } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import formatCountryName from "@/formatCountryName";
+import EachCountrySkeleton from "./ui/EachCountrySkeleton";
 
 const EachCountry = () => {
   const { theme } = useTheme();
@@ -53,15 +53,20 @@ const EachCountry = () => {
             Back
           </button>
         </div>
-        {isLoading ? (
-          <Skeleton className="absolute top-[30%] left-[20%] w-[60%] h-8 rounded-md" />
-        ) : (
-          <section
-            className={`${textColor} text-center text-xl max-container w-full pb-20 mt-12 grid gap-10 grid-cols-auto`}
+
+        {error && (
+          <h2
+            className={`${textColor} w-full mt-20 mx-auto text-xl text-center italic`}
           >
-            {data ? <Country item={data} /> : `${error}`}
-          </section>
+            Uhh Ohh! An unexpected error occurred!
+          </h2>
         )}
+        <section
+          className={`${textColor} text-center text-xl max-container w-full pb-20 mt-12 grid gap-10 grid-cols-auto`}
+        >
+          {data && <Country item={data} />}
+          {isLoading && <EachCountrySkeleton />}
+        </section>
       </main>
     </>
   );

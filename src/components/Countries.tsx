@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import useTheme from "@/context/useTheme";
 import CountriesData from "./CountriesData";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useCountries } from "../context/useCountries";
+import CountriesDataSkeleton from "./ui/CountriesDataSkeleton";
 
 interface Country {
   region: string;
@@ -69,7 +69,12 @@ const Countries = () => {
 
   if (isLoading) {
     return (
-      <Skeleton className="absolute top-[70%] left-[20%] w-[60%] h-8 rounded-md" />
+      <>
+        <CountriesDataSkeleton />
+        <CountriesDataSkeleton />
+        <CountriesDataSkeleton />
+        <CountriesDataSkeleton />
+      </>
     );
   }
 
